@@ -19,4 +19,10 @@ interface TodoDAO {
 
     @Query("DELETE FROM todo WHERE id=:todoId")
     fun delete(todoId: Int)
+
+    @Query("SELECT * FROM todo WHERE id=:todoId")
+    fun selectById(todoId: Int): LiveData<Todo>
+
+    @Query("SELECT COUNT(id) FROM todo")
+    fun size(): LiveData<Int>
 }

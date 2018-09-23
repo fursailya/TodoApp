@@ -1,4 +1,4 @@
-package com.todo.fursa.model
+package com.todo.fursa.room.model
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity

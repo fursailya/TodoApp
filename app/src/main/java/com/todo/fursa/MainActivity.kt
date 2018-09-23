@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val db = AppDatabase.newInstance(baseContext)
-        val dao = db.todoDAO
+        val dao = db!!.todoDAO
 
         dao.getAll().observe(this, Observer {
           Log.d(MAIN_TAG, it.toString())

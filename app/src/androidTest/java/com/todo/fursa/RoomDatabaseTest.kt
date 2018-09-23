@@ -24,7 +24,7 @@ class RoomDatabaseTest {
     @Before
     fun createAppDatabase() {
         context = InstrumentationRegistry.getTargetContext()!!
-        appDatabase = AppDatabase.newInstance(context)
+        appDatabase = AppDatabase.newInstance(context)!!
         todoDAO = appDatabase.todoDAO
     }
 

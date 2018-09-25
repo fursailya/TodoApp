@@ -1,4 +1,4 @@
-package com.todo.fursa
+package com.todo.fursa.ui.activity
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
@@ -7,7 +7,9 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
+import com.todo.fursa.R
 import com.todo.fursa.room.database.AppDatabase
+import com.todo.fursa.ui.fragment.AddTodoBottomSheet
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomAppBar: BottomAppBar

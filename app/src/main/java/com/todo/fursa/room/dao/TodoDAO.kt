@@ -15,7 +15,7 @@ interface TodoDAO {
     fun getAll(): LiveData<List<Todo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(todo: Todo)
+    fun save(todo: Todo?)
 
     @Query("DELETE FROM todo WHERE id=:todoId")
     fun delete(todoId: Int)

@@ -19,67 +19,93 @@
         android:text="@string/new_todo_add_title"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.design.widget.TextInputLayout
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/tilTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="#00000000"
+        android:fontFamily="@font/roboto_light"
+        android:hint="@string/todo_title_hint"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/todo_title_hint"
-            android:textSize="14sp" />
-    </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout"
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/tilText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
+        android:background="#00000000"
+        android:fontFamily="@font/roboto_light"
+        android:hint="@string/todo_text_hint"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilTitle" />
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/todo_text_hint"
-            android:textSize="14sp" />
-    </android.support.design.widget.TextInputLayout>
 
     <android.support.design.button.MaterialButton
+        android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="56dp"
         android:text="@string/add_todo_title"
         android:textAllCaps="false"
         app:backgroundTint="@color/colorAccent"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDismiss"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilText"
         tools:ignore="MissingConstraints" />
 
     <android.support.design.button.MaterialButton
+        android:id="@+id/btnDismiss"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="68dp"
         android:text="@string/add_todo_cancel"
         android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAdd"
+        app:layout_constraintTop_toBottomOf="@+id/tilText"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorWhite"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+        app:layout_constraintEnd_toEndOf="@+id/tilText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilText"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_add_alarm_blue_24dp"
         tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

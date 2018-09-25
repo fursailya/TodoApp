@@ -6,7 +6,7 @@ import android.support.design.bottomappbar.BottomAppBar
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.Toast
+import android.view.Menu
 import com.todo.fursa.room.database.AppDatabase
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(bottomAppBar)
 
         fab.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Clicked", Toast.LENGTH_SHORT).show()
+          val dialog = AddTodoBottomSheet.newInstance()
+          dialog.show(supportFragmentManager, dialog.tag)
         }
 
 
@@ -34,6 +35,11 @@ class MainActivity : AppCompatActivity() {
           Log.d(MAIN_TAG, it.toString())
         })
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 
     companion object {

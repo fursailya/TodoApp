@@ -7,4 +7,7 @@
     <string name="todo_text_hint">Текст заметки</string>
     <string name="add_todo_title">Создать</string>
     <string name="add_todo_cancel">Отмена</string>
+    <string name="test_title">Test title</string>
+    <string name="lorem_ipsum_dolor_sit_amet_contestar">Lorem ipsum dolor sit amet contestar</string>
+    <string name="user_empty_list_message">Please add your first Todo</string>
 </resources>

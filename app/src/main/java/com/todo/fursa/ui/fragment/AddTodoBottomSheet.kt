@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputEditText
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.todo.fursa.R
 import com.todo.fursa.room.model.Todo
 import com.todo.fursa.ui.viewmodel.MainViewModel
@@ -35,7 +36,13 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
         tilText = rootView.findViewById(R.id.tilText)
 
         btnAdd.setOnClickListener {
+            if(tilTitle.text!!.isEmpty() && tilText.text!!.isEmpty()) {
+                Toast.makeText(context, "Вы пытаетесь добавить пустую заметку!", Toast.LENGTH_LONG).show()
+            } else {
             viewModel.insert(Todo(tilTitle.text.toString(), tilText.text.toString(), System.currentTimeMillis()))
+            Toast.makeText(context, "${tilTitle.text.toString()} - добавлено!", Toast.LENGTH_SHORT).show()
+            dismiss()
+            }
         }
 
         btnDismiss.setOnClickListener { dismiss() }

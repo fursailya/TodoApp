@@ -6,6 +6,11 @@ import com.todo.fursa.room.model.Todo
 
 /**
  *  @author Fursa Ilya
+ *
+ *  getAll - gets all items from the database
+ *  save - saves item ot the database
+ *  delete - gets id and remove an item by id
+ *  selectById - is almost the same with delete, but It gets an item by it's id
  */
 
 @Dao

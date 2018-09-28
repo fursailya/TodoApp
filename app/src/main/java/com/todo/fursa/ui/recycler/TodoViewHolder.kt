@@ -2,6 +2,7 @@ package com.todo.fursa.ui.recycler
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.todo.fursa.R
@@ -13,4 +14,5 @@ class TodoViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickLis
 
     val title: TextView = view.findViewById(R.id.titleTextView)
     val description: TextView = view.findViewById(R.id.textTextView)
+    val priority: ImageView = view.findViewById(R.id.priorityImageView)
 }

@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.support.design.button.MaterialButton
 import android.support.design.widget.BottomSheetDialogFragment
 import android.support.design.widget.TextInputEditText
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.Toast
 import com.todo.fursa.R
 import com.todo.fursa.room.model.Todo
@@ -19,6 +21,10 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
     private lateinit var rootView: View
     private lateinit var tilTitle: TextInputEditText
     private lateinit var tilText: TextInputEditText
+
+    private lateinit var checkBoxAsap: CheckBox
+
+    private var priorityValue: Int = 0 //0 - low  1 - asap
 
     private lateinit var viewModel: MainViewModel
 
@@ -35,11 +41,22 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
         tilTitle = rootView.findViewById(R.id.tilTitle)
         tilText = rootView.findViewById(R.id.tilText)
 
+        checkBoxAsap = rootView.findViewById(R.id.chbASAP)
+
+
         btnAdd.setOnClickListener {
             if(tilTitle.text!!.isEmpty() && tilText.text!!.isEmpty()) {
                 Toast.makeText(context, "Вы пытаетесь добавить пустую заметку!", Toast.LENGTH_LONG).show()
             } else {
-            viewModel.insert(Todo(tilTitle.text.toString(), tilText.text.toString(), System.currentTimeMillis()))
+
+                priorityValue = when {
+                    checkBoxAsap.isChecked -> 1
+                    else -> 0
+                }
+
+                Log.d(LOG_TAG, "Priority: $priorityValue")
+
+            viewModel.insert(Todo(tilTitle.text.toString(), tilText.text.toString(), priorityValue, System.currentTimeMillis()))
             Toast.makeText(context, "${tilTitle.text.toString()} - добавлено!", Toast.LENGTH_SHORT).show()
             dismiss()
             }
@@ -57,5 +74,8 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
             dialog.arguments = args
             return dialog
         }
+
+        const val LOG_TAG = "Todo/AddBottomSheet"
     }
+
 }

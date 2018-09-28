@@ -47,9 +47,12 @@ dependencies {
     //Android data binding
     kapt "com.android.databinding:compiler:3.1.4"
     //Material components
-/*
+    /*
     implementation 'com.google.android.material:material:1.0.0'
-*/
+    */
+    //CircleImageView library
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
     testImplementation 'junit:junit:4.12'
     //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

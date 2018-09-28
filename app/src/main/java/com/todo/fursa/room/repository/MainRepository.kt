@@ -24,4 +24,6 @@ class MainRepository {
         InsertAsyncTask(dao).execute(todo)
     }
 
+    fun clearAll() { dao.deleteAll() }
+
 }

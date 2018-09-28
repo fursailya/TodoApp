@@ -19,4 +19,6 @@ open class MainViewModel : AndroidViewModel {
 
     fun insert(todo: Todo) { mainRepository.save(todo) }
 
+    fun clearAll() { mainRepository.clearAll() }
+
 }

@@ -43,7 +43,7 @@ class RoomDatabaseTest {
 
     @Test
     fun saveTest() {
-        val todo = Todo("Test title 2", "Test description 2", System.currentTimeMillis())
+        val todo = Todo("Test title 2", "Test description 2", 2, System.currentTimeMillis())
         todoDAO.save(todo)
         todoDAO.selectById(2).observeForever {
             Assert.assertEquals(todo.title, it!!.title)

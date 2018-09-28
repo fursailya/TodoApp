@@ -4,7 +4,7 @@ interface IBaseListAdapter<T> {
 
     fun add(newItem: T)
 
-    fun addAll(newItems: ArrayList<T>?)
+  //  fun addAll(newItems: ArrayList<T>?)
 
     fun addAtPosition(pos: Int, newItem: T)
 

@@ -1,6 +1,10 @@
 package com.todo.fursa.ui.fragment
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context.ALARM_SERVICE
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.button.MaterialButton
 import android.support.design.widget.BottomSheetDialogFragment
@@ -12,8 +16,11 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.Toast
 import com.todo.fursa.R
+import com.todo.fursa.alarm.AlarmReceiver
 import com.todo.fursa.room.model.Todo
 import com.todo.fursa.ui.viewmodel.MainViewModel
+import com.todo.fursa.util.toTimestamp
+import java.util.*
 
 open class AddTodoBottomSheet: BottomSheetDialogFragment() {
     private lateinit var btnAdd: MaterialButton
@@ -21,12 +28,21 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
     private lateinit var rootView: View
     private lateinit var tilTitle: TextInputEditText
     private lateinit var tilText: TextInputEditText
+    private lateinit var tilTime: TextInputEditText
+    private lateinit var tilDate: TextInputEditText
 
     private lateinit var checkBoxAsap: CheckBox
 
     private var priorityValue: Int = 0 //0 - low  1 - asap
 
     private lateinit var viewModel: MainViewModel
+
+    private lateinit var intentAlarm: Intent
+    private lateinit var pendingIntent: PendingIntent
+    private lateinit var alarmManager: AlarmManager
+
+    private lateinit var calendar: Calendar
+    private lateinit var date: Date
 
     override fun getTheme(): Int = R.style.BottomSheetDialogTheme
 
@@ -41,7 +57,15 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
         tilTitle = rootView.findViewById(R.id.tilTitle)
         tilText = rootView.findViewById(R.id.tilText)
 
+        tilTime = rootView.findViewById(R.id.tilAlarmTime)
+        tilDate = rootView.findViewById(R.id.tilAlarmDate)
+
+
         checkBoxAsap = rootView.findViewById(R.id.chbASAP)
+
+        alarmManager = context!!.getSystemService(ALARM_SERVICE) as AlarmManager
+
+        calendar = Calendar.getInstance()
 
 
         btnAdd.setOnClickListener {
@@ -56,9 +80,25 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
 
                 Log.d(LOG_TAG, "Priority: $priorityValue")
 
-            viewModel.insert(Todo(tilTitle.text.toString(), tilText.text.toString(), priorityValue, System.currentTimeMillis()))
+
+            date = Date(toTimestamp(tilTime.text.toString(), tilDate.text.toString()))
+            calendar.set(Calendar.HOUR_OF_DAY, date.hours)
+            calendar.set(Calendar.MINUTE, date.minutes)
+
+            intentAlarm = Intent(this.activity, AlarmReceiver::class.java)
+
+            intentAlarm.putExtra(TODO_TITLE, tilTitle.text.toString())
+            intentAlarm.putExtra(TODO_TEXT, tilText.text.toString())
+
+            viewModel.insert(Todo(tilTitle.text.toString(), tilText.text.toString(), priorityValue, toTimestamp(tilTime.text.toString(), tilDate.text.toString())))
+
+            pendingIntent = PendingIntent.getBroadcast(this.activity, 0, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT)
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+
+
             Toast.makeText(context, "${tilTitle.text.toString()} - добавлено!", Toast.LENGTH_SHORT).show()
             dismiss()
+
             }
         }
 
@@ -76,6 +116,9 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
         }
 
         const val LOG_TAG = "Todo/AddBottomSheet"
+
+        const val TODO_TITLE = "todo_title"
+        const val TODO_TEXT = "todo_text"
     }
 
 }

@@ -26,4 +26,6 @@ class MainRepository {
 
     fun clearAll() { dao.deleteAll() }
 
+    fun selectById(id: Long): LiveData<Todo> { return dao.selectById(id) }
+
 }

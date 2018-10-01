@@ -21,7 +21,7 @@ abstract class BaseListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
         notifyDataSetChanged()
     }
 
-    fun addAll(newItems: List<Todo>?) {
+    fun addAll(newItems: List<IBaseListItem>?) {
 
         items.clear()
 
@@ -34,7 +34,7 @@ abstract class BaseListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 
     override fun addAtPosition(pos: Int, newItem: IBaseListItem) {
         items.add(pos, newItem)
-        notifyDataSetChanged()
+        notifyItemInserted(pos)
     }
 
     override fun clearAll() {

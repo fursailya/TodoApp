@@ -20,7 +20,7 @@ import com.todo.fursa.ui.recycler.IBaseListItem
 data class Todo(
         @ColumnInfo(name = "title") var title: String,
         @ColumnInfo(name = "description") var text: String,
-        @ColumnInfo(name = "priority_high") val priority: Int,
+        @ColumnInfo(name = "priority") val priority: Int,
         @ColumnInfo(name = "time") var time: Long): IBaseListItem, Comparable<Todo> {
 
         override fun compareTo(other: Todo): Int {

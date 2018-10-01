@@ -16,9 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".ui.activity.DetailActivity">
+        </activity>
+        <receiver android:name=".alarm.AlarmReceiver"/>
     </application>
 
 </manifest>

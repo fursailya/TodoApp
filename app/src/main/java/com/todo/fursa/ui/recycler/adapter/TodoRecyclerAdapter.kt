@@ -1,4 +1,4 @@
-package com.todo.fursa.ui.recycler
+package com.todo.fursa.ui.recycler.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import com.todo.fursa.R
 import com.todo.fursa.room.model.Separator
 import com.todo.fursa.room.model.Todo
-import com.todo.fursa.ui.activity.MainActivity
+import com.todo.fursa.ui.recycler.holder.SeparatorViewHolder
+import com.todo.fursa.ui.recycler.holder.TodoViewHolder
 import com.todo.fursa.util.IListCallback
 import com.todo.fursa.util.fromTimestamp
-import com.todo.fursa.util.toast
 import java.lang.IllegalStateException
 
 class TodoRecyclerAdapter(private var callback: IListCallback): BaseListAdapter() {
@@ -39,6 +39,7 @@ class TodoRecyclerAdapter(private var callback: IListCallback): BaseListAdapter(
 
                 holder.itemView.setOnClickListener {
                     callback.onShowTodoDetails(item.id)
+                    Log.d(LOG_TAG, "Id = ${item.id} at the moment")
                 }
 
             }

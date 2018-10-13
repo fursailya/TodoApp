@@ -14,5 +14,8 @@
     <string name="alarm_date">Дата</string>
     <string name="alarm_time">Время</string>
     <string name="low_priority">Низкий приоритет</string>
-    <string name="high_priority">Срочно</string>
+    <string name="high_priority">Высокий приоритет</string>
+    <string name="menu_delete_current_todo_title">Удалить заметку</string>
+    <string name="sign_out">Sign out</string>
+    <string name="other">Additional</string>
 </resources>

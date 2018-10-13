@@ -1,7 +1,7 @@
 package com.todo.fursa.room.model
 
 import com.todo.fursa.R
-import com.todo.fursa.ui.recycler.IBaseListItem
+import com.todo.fursa.ui.recycler.adapter.base.IBaseListItem
 
 data class Separator(val title: String): IBaseListItem {
 

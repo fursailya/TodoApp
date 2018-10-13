@@ -3,7 +3,6 @@ package com.todo.fursa.ui.fragment
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.button.MaterialButton
@@ -16,13 +15,15 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.Toast
 import com.todo.fursa.R
+import com.todo.fursa.TodoApplication
 import com.todo.fursa.alarm.AlarmReceiver
 import com.todo.fursa.room.model.Todo
 import com.todo.fursa.ui.viewmodel.MainViewModel
 import com.todo.fursa.util.toTimestamp
 import java.util.*
+import javax.inject.Inject
 
-open class AddTodoBottomSheet: BottomSheetDialogFragment() {
+class AddTodoBottomSheet: BottomSheetDialogFragment() {
     private lateinit var btnAdd: MaterialButton
     private lateinit var btnDismiss: MaterialButton
     private lateinit var rootView: View
@@ -39,14 +40,18 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
 
     private lateinit var intentAlarm: Intent
     private lateinit var pendingIntent: PendingIntent
-    private lateinit var alarmManager: AlarmManager
-
-    private lateinit var calendar: Calendar
     private lateinit var date: Date
+
+    @Inject
+    lateinit var alarmManager: AlarmManager
+
+    @Inject
+    lateinit var calendar: Calendar
 
     override fun getTheme(): Int = R.style.BottomSheetDialogTheme
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        TodoApplication.component.inject(this)
         viewModel = ViewModelProviders.of(this@AddTodoBottomSheet).get(MainViewModel::class.java)
 
         rootView = layoutInflater.inflate(R.layout.bottom_sheet_add_todo, container, false)
@@ -60,13 +65,7 @@ open class AddTodoBottomSheet: BottomSheetDialogFragment() {
         tilTime = rootView.findViewById(R.id.tilAlarmTime)
         tilDate = rootView.findViewById(R.id.tilAlarmDate)
 
-
         checkBoxAsap = rootView.findViewById(R.id.chbASAP)
-
-        alarmManager = context!!.getSystemService(ALARM_SERVICE) as AlarmManager
-
-        calendar = Calendar.getInstance()
-
 
         btnAdd.setOnClickListener {
             if(tilTitle.text!!.isEmpty() && tilText.text!!.isEmpty()) {

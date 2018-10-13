@@ -6,4 +6,5 @@
     <color name="colorWhite">#FFFF</color>
     <color name="colorAlert">#d6434b</color>
     <color name="colorYellow">#dcd863</color>
+    <color name="colorGreyLine">#f4f4f4</color>
 </resources>

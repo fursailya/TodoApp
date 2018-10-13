@@ -4,7 +4,6 @@ package com.todo.fursa.util
 
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
-import java.util.*
 
 fun toTimestamp(time: String, date: String): Long {
     val dateFormatter = SimpleDateFormat("HH:mm dd.MM.yyyy")

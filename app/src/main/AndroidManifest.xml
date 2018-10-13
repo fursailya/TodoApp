@@ -3,13 +3,14 @@
     package="com.todo.fursa">
 
     <application
+        android:name=".TodoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +23,15 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:theme="@style/AppTheme"
-            android:name=".ui.activity.DetailActivity">
-        </activity>
-        <receiver android:name=".alarm.AlarmReceiver"/>
+            android:name=".ui.activity.DetailActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".ui.activity.MainActivity" />
+
+        <receiver android:name=".alarm.AlarmReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

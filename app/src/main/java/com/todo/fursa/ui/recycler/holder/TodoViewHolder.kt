@@ -1,4 +1,4 @@
-package com.todo.fursa.ui.recycler
+package com.todo.fursa.ui.recycler.holder
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

@@ -1,13 +1,14 @@
-package com.todo.fursa.ui.recycler
+package com.todo.fursa.ui.recycler.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.todo.fursa.room.model.Todo
+import com.todo.fursa.ui.recycler.adapter.base.IBaseListAdapter
+import com.todo.fursa.ui.recycler.adapter.base.IBaseListItem
 
-abstract class BaseListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), IBaseListAdapter<IBaseListItem>{
+abstract class BaseListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), IBaseListAdapter<IBaseListItem> {
     protected val items: ArrayList<IBaseListItem> = ArrayList()
 
     override fun getItemCount(): Int = items.size

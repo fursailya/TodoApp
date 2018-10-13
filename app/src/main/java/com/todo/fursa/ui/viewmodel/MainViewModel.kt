@@ -4,17 +4,20 @@ import android.app.Activity
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import android.support.v7.app.AppCompatActivity
+import com.todo.fursa.TodoApplication
 import com.todo.fursa.room.model.Todo
 import com.todo.fursa.room.repository.MainRepository
+import javax.inject.Inject
 
-open class MainViewModel : AndroidViewModel {
-    private var mainRepository: MainRepository
+class MainViewModel : AndroidViewModel {
+    @Inject
+    lateinit var mainRepository: MainRepository
+
     private var mAllNotes: LiveData<List<Todo>>
 
     constructor(application: Application) : super(application) {
-        mainRepository = MainRepository(application)
+        TodoApplication.component.inject(this)
         mAllNotes = mainRepository.getAllNotes()
     }
 
@@ -26,8 +29,6 @@ open class MainViewModel : AndroidViewModel {
 
     fun selectById(id: Long): LiveData<Todo> { return mainRepository.selectById(id) }
 
-    companion object {
-      //Todo Obtain View model method
-    }
+    fun deleteById(id: Long) { mainRepository.deleteById(id) }
 
 }

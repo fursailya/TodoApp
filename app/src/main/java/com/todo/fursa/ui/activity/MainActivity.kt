@@ -1,10 +1,10 @@
 package com.todo.fursa.ui.activity
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -32,7 +32,7 @@ class MainActivity : BaseActivity(), IListCallback {
         viewModel = ViewModelProviders.of(this@MainActivity).get(MainViewModel::class.java)
 
         adapter = TodoRecyclerAdapter(this)
-        recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this@MainActivity)
         recyclerView.adapter = adapter
 
         viewModel.getAll().observe(this@MainActivity, Observer {
@@ -62,6 +62,7 @@ class MainActivity : BaseActivity(), IListCallback {
         intent.putExtra(EXTRA_NOTE_ID, todoId)
         intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
         startActivity(intent)
+        this.finish()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

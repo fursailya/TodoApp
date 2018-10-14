@@ -1,6 +1,5 @@
 package com.todo.fursa.ui.recycler.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.ViewGroup
 import com.todo.fursa.R
@@ -10,12 +9,11 @@ import com.todo.fursa.ui.recycler.holder.SeparatorViewHolder
 import com.todo.fursa.ui.recycler.holder.TodoViewHolder
 import com.todo.fursa.util.IListCallback
 import com.todo.fursa.util.fromTimestamp
-import java.lang.IllegalStateException
 
 class TodoRecyclerAdapter(private var callback: IListCallback): BaseListAdapter() {
     private var listCallback: IListCallback = callback
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val context = parent.context
 
         return when(viewType) {
@@ -25,7 +23,7 @@ class TodoRecyclerAdapter(private var callback: IListCallback): BaseListAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is TodoViewHolder -> {
                 val item = items[position] as Todo

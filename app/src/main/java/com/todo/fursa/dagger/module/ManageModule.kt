@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Context.NOTIFICATION_SERVICE
 import android.os.Build
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import com.todo.fursa.alarm.NotificationHelper
 import dagger.Module
 import dagger.Provides

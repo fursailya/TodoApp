@@ -2,12 +2,12 @@ package com.todo.fursa.ui.fragment
 
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.button.MaterialButton
-import android.support.design.widget.BottomSheetDialogFragment
-import android.support.design.widget.TextInputEditText
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.textfield.TextInputEditText
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View

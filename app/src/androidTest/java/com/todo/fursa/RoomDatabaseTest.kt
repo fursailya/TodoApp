@@ -1,8 +1,8 @@
 package com.todo.fursa
 
 import android.content.Context
-import android.support.test.InstrumentationRegistry
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnit4
 import com.todo.fursa.room.dao.TodoDAO
 import com.todo.fursa.room.database.AppDatabase
 import com.todo.fursa.room.model.Todo

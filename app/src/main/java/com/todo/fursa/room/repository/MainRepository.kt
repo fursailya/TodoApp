@@ -1,6 +1,6 @@
 package com.todo.fursa.room.repository
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.todo.fursa.TodoApplication
 import com.todo.fursa.room.dao.TodoDAO
 import com.todo.fursa.room.model.Todo

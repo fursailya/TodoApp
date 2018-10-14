@@ -1,10 +1,10 @@
 package com.todo.fursa.ui.fragment
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.BottomSheetDialogFragment
-import android.support.design.widget.NavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.navigation.NavigationView
 import android.util.Log
 import android.view.*
 import android.widget.TextView

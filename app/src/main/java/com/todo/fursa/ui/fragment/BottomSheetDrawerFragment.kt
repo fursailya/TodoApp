@@ -1,5 +1,6 @@
 package com.todo.fursa.ui.fragment
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialogFragment
@@ -13,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.squareup.picasso.Picasso
 import com.todo.fursa.R
 import com.todo.fursa.ui.activity.AuthActivity
+import com.todo.fursa.ui.viewmodel.MainViewModel
 import de.hdodenhof.circleimageview.CircleImageView
 
 class BottomSheetDrawerFragment: BottomSheetDialogFragment() {
@@ -21,10 +23,15 @@ class BottomSheetDrawerFragment: BottomSheetDialogFragment() {
     private lateinit var userAva: CircleImageView
     private lateinit var navigationView: NavigationView
 
+    private lateinit var viewModel: MainViewModel
+
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val currentUser: FirebaseUser = firebaseAuth.currentUser!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
         val rootView = inflater.inflate(R.layout.fragment_bottom_sheet_drawer, container, false)
         userNameTextView = rootView.findViewById(R.id.userNameTextView)
         userEmailTextView = rootView.findViewById(R.id.userEmailTextView)
@@ -42,6 +49,14 @@ class BottomSheetDrawerFragment: BottomSheetDialogFragment() {
                     startActivity(Intent(this.activity, AuthActivity::class.java))
                     this.activity!!.finish()
                 }
+
+                R.id.menu_done_tasks -> {
+                    viewModel.clearAll()
+                }
+
+                R.id.menu_settings -> {
+                    Toast.makeText(context, "Settings", Toast.LENGTH_LONG).show()
+                }
             }
             true
         }
@@ -50,9 +65,6 @@ class BottomSheetDrawerFragment: BottomSheetDialogFragment() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater!!.inflate(R.menu.main_menu, menu)
-    }
 
     companion object {
         fun newInstance(): BottomSheetDrawerFragment {

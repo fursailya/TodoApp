@@ -5,12 +5,9 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import com.todo.fursa.R
 import com.todo.fursa.ui.base.BaseActivity
 import com.todo.fursa.ui.fragment.AddTodoBottomSheet
@@ -21,14 +18,10 @@ import com.todo.fursa.ui.viewmodel.MainViewModel
 import com.todo.fursa.util.IListCallback
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
-import javax.inject.Inject
 
 class MainActivity : BaseActivity(), IListCallback {
     private lateinit var adapter: BaseListAdapter
     private lateinit var viewModel: MainViewModel
-
-    @Inject
-    lateinit var firebaseAuth: FirebaseAuth
 
     override fun getContentViewLayout() = R.layout.activity_main
 
@@ -57,7 +50,6 @@ class MainActivity : BaseActivity(), IListCallback {
             }
         })
 
-
         fab.setOnClickListener {
             val dialog = AddTodoBottomSheet.newInstance()
             dialog.show(supportFragmentManager, dialog.tag)
@@ -73,14 +65,7 @@ class MainActivity : BaseActivity(), IListCallback {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item!!.itemId) {
-            R.id.menu_settings -> { Toast.makeText(baseContext, "Settings", Toast.LENGTH_LONG).show() }
-            R.id.menu_done_tasks -> { viewModel.clearAll() }
-            R.id.menu_sign_out -> {
-                firebaseAuth.signOut()
-                startActivity(Intent(this@MainActivity, AuthActivity::class.java))
-                this.finish()
-            }
+        when(item!!.itemId) {
             android.R.id.home -> {
                 val navDrawerFragment = BottomSheetDrawerFragment.newInstance()
                 navDrawerFragment.show(supportFragmentManager, navDrawerFragment.tag)

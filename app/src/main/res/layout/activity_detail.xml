@@ -9,64 +9,65 @@
             type="com.todo.fursa.room.model.Todo"/>
     </data>
 
-<android.support.constraint.ConstraintLayout
-    tools:context=".ui.activity.DetailActivity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.DetailActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@{todo.title}"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priorityImageView"
-        tools:text="Lorem ipsum dolor sit amet" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{todo.title}"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/priorityImageView"
+            tools:text="Lorem ipsum dolor sit amet" />
 
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/roboto_light"
-        android:text="@{todo.text}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:text="Lorem ipsum dolor sit amet" />
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="@{todo.text}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Lorem ipsum dolor sit amet" />
 
-    <ImageView
-        android:id="@+id/priorityImageView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:background="@{todo.priority == 1 ? @drawable/priority_high : @drawable/priority_low}"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/priorityImageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="@{todo.priority == 1 ? @drawable/priority_high : @drawable/priority_low}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/priorityText"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@{todo.priority == 1 ? @string/high_priority : @string/low_priority}"
-        app:layout_constraintBottom_toBottomOf="@+id/priorityImageView"
-        app:layout_constraintStart_toEndOf="@+id/priorityImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
-        tools:text="High" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/priorityText"
+            android:layout_width="154dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{todo.priority == 1 ? @string/high_priority : @string/low_priority}"
+            app:layout_constraintBottom_toBottomOf="@+id/priorityImageView"
+            app:layout_constraintStart_toEndOf="@+id/priorityImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.96"
+            tools:text="High" />
+
+    </android.support.constraint.ConstraintLayout>
 </layout>

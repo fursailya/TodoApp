@@ -9,6 +9,8 @@ import com.todo.fursa.R
 import com.todo.fursa.ui.base.BaseActivity
 import android.content.Intent
 import android.support.annotation.NonNull
+import android.support.v4.app.FragmentActivity
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import com.google.android.gms.common.api.GoogleApiClient
@@ -21,16 +23,15 @@ import kotlinx.android.synthetic.main.activity_auth.*
 
 const val RC_SIGN_INTENT = 1
 
-class AuthActivity: BaseActivity() {
+class AuthActivity: AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var authListener: FirebaseAuth.AuthStateListener
     private lateinit var googleApiClient: GoogleApiClient
     private lateinit var signInAccount: GoogleSignInAccount
 
-    override fun getContentViewLayout() = R.layout.activity_auth
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_auth)
 
         firebaseAuth = FirebaseAuth.getInstance()
 
@@ -77,7 +78,7 @@ class AuthActivity: BaseActivity() {
         val credential = GoogleAuthProvider.getCredential(signInAccount.idToken, null)
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener {
-                    Log.d("Todo/Auth", "Hello ${signInAccount.familyName}")
+                    Log.d("Todo/AuthActivity", "Hello ${signInAccount.familyName}")
                     Toast.makeText(baseContext, "Hello ${signInAccount.displayName}", Toast.LENGTH_LONG).show()
                     startActivity(Intent(this@AuthActivity, MainActivity::class.java))
                 }

@@ -31,4 +31,6 @@ class MainViewModel : AndroidViewModel {
 
     fun deleteById(id: Long) { mainRepository.deleteById(id) }
 
+    fun size(): LiveData<Int> { return mainRepository.size() }
+
 }

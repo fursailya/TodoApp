@@ -19,4 +19,10 @@
     <string name="sign_out">Sign out</string>
     <string name="other">Additional</string>
     <string name="remove_btn">Удалить</string>
+
+    <string name="attach_dialog_title">Выберите источник</string>
+    <string-array name="attach_variants">
+        <item>Выбрать из галереи</item>
+        <item>Сделать снимок с камеры</item>
+    </string-array>
 </resources>

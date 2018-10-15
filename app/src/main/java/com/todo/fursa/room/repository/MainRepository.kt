@@ -30,4 +30,6 @@ class MainRepository {
 
     fun selectById(id: Long): LiveData<Todo> { return dao.selectById(id) }
 
+    fun size(): LiveData<Int> = dao.size()
+
 }

@@ -8,6 +8,7 @@
     tools:context=".ui.activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:padding="4dp"
         android:id="@+id/recyclerView"
         android:layout_marginBottom="?android:actionBarSize"
         android:layout_height="match_parent"

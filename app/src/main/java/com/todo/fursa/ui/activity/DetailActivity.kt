@@ -1,8 +1,11 @@
 package com.todo.fursa.ui.activity
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -35,6 +38,8 @@ class DetailActivity : AppCompatActivity() {
             startMainActivity()
         }
 
+        imageButtonAttachFile.setOnClickListener { showAttachDialog() }
+
     }
 
     override fun onBackPressed() {
@@ -47,5 +52,16 @@ class DetailActivity : AppCompatActivity() {
         mainActivityIntent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
         startActivity(mainActivityIntent)
         this.finish()
+    }
+
+    private fun showAttachDialog() {
+        val dialog =  AlertDialog.Builder(this)
+                .setTitle(R.string.attach_dialog_title)
+                .setItems(R.array.attach_variants) { dialog, which ->  when(which) {
+                    0 -> Toast.makeText(baseContext, "Gallery", Toast.LENGTH_LONG).show()
+                    1 -> Toast.makeText(baseContext, "From Camera", Toast.LENGTH_LONG).show()
+                }}.create()
+
+        dialog.show()
     }
 }

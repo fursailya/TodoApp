@@ -51,7 +51,7 @@ class BottomSheetDrawerFragment: BottomSheetDialogFragment() {
                 }
 
                 R.id.menu_done_tasks -> {
-                    viewModel.clearAll()
+                  Log.d(LOG_TAG, "ViewModel size = ${viewModel.size().value}")
                 }
 
                 R.id.menu_settings -> {
